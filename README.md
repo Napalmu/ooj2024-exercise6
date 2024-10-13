@@ -13,13 +13,11 @@ Huomaa, että testit täytyy kuitenkin ajaa erikseen.
 
 ## Tehtäviin vastaaminen
 
-- Tehtävät 
-- Tehtävä 3 
-- Tehtävä 4 
-- Tehtävä 5 
-- Tehtävä 6 
-- Tehtävä 7 
-- Tehtävä 8 
+- Tehtävät 1-2 vastataan Villessä
+- Tehtävä 3 Tutustutaan tehtäväpohjan koodiin ja vastataan Villessä
+- Tehtävä 4 Ohjelmointitehtävä. Tehtävänanto Villessä. Koodataan tehtäväpohjaan ja oman Gitlab repositorion linkki tallennetaan Villeen.
+- Tehtävä 5 Ohjelmointitehtävä. Tehtävänanto Villessä. Koodataan tehtäväpohjaan ja oman Gitlab repositorion linkki tallennetaan Villeen.
+
 
 Maven-projektissa testit sijoitetaan test-hakemiston alle. 
 
