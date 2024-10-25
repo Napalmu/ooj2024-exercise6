@@ -1,10 +1,7 @@
 package fi.utu.tech.ooj.exercise6.map2d;
 
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
 
 /*Kirjoita tähän toteutus Map2d rajapinnan implementoivalle HashMap2d luokalle.
   Vinkki: huomaa, että myös luokan signatuuri on keskeneräinen.
@@ -34,7 +31,12 @@ public class HashMap2d<K, S, V> implements Map2d<K, S, V>{
     /* Poistaa avainten osoittaman arvon ja samalla myös palauttaa sen paluuarvona. Jos arvoa ei löydy, palautetaan null */
     @Override
     public V remove(K key1, S key2) {
-        return map2d.containsKey(key1) ? map2d.get(key1).get(key2) : null;
+        insertionOrder.remove(map2d.get(key1).get(key2));
+        V removedItem = map2d.get(key1).remove(key2);
+        if (map2d.get(key1).isEmpty()){
+            map2d.remove(key1);
+        }
+        return removedItem;
     }
     /* Palauttaa totuusarvon true, jos avaimet löytyvät. Muuten false */
     @Override
@@ -54,7 +56,11 @@ public class HashMap2d<K, S, V> implements Map2d<K, S, V>{
     /*Palauttaa arvojen määrän */
     @Override
     public int size() {
-        return map2d.size();
+        int size = 0;
+        for (Map.Entry<K, HashMap<S, V>> entry : map2d.entrySet()){
+            size += entry.getValue().size();
+        }
+        return size;
     }
     /*Palauttaa kaikki talletetut arvot Collection tyyppisenä joukkona. */
     @Override
