@@ -12,11 +12,13 @@ public class Vaestorekisteri {
         hetuRekisteri = new HashMap<>();
         ikajarjestysRekisteri = new TreeMap<>(DoBComparator);
     }
-    Comparator<Kansalainen> DoBComparator = Comparator
-                                            .comparing((Kansalainen k) -> Integer.parseInt(k.getHenkilotunnus().toString().substring(4, 6)), Comparator.reverseOrder()) //Year
-                                            .thenComparing((Kansalainen k) -> Integer.parseInt(k.getHenkilotunnus().toString().substring(2, 4)), Comparator.reverseOrder()) //Month
-                                            .thenComparing((Kansalainen k) -> Integer.parseInt(k.getHenkilotunnus().toString().substring(0, 2)), Comparator.reverseOrder()) //Day
-                                            .thenComparing((Kansalainen k) -> k.getHenkilotunnus().toString().substring(6));
+
+    //Date of Birth Comparator, järjestää henkilötunnukset syntymäajan mukaan.
+    Comparator<HenkiloTunnus> DoBComparator = Comparator
+                                            .comparing((HenkiloTunnus h) -> Integer.parseInt(h.toString().substring(4, 6))) //Vuosi
+                                            .thenComparing((h) -> Integer.parseInt(h.toString().substring(2, 4))) //Kuukausi
+                                            .thenComparing((h) -> Integer.parseInt(h.toString().substring(0, 2))) //Päivä
+                                            .thenComparing((h) -> h.toString().substring(6)); //Loput luonollisessa järjestyksessä
 
 
     public void  lisaaRekisteriin(Kansalainen tyyppi) {
