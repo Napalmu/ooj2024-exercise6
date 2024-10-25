@@ -12,6 +12,7 @@ public class HashMap2dKaynnistin {
          *
          * */
 
+        HashMap2d<Integer, Integer, String> testMap = new HashMap2d<>();
 
         System.out.println("------ HashMap2d luokan demo päättyy ------");
     }
