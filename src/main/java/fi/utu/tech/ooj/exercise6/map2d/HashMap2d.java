@@ -7,7 +7,9 @@ import java.util.*;
   Vinkki: huomaa, että myös luokan signatuuri on keskeneräinen.
  */
 public class HashMap2d<K, S, V> implements Map2d<K, S, V>{
+    /*Kaksi ulotteinen HashMap*/
     private HashMap<K, HashMap<S,V>> map2d;
+    /*ArrayList elementtien lisäämisjärjestystä varten*/
     private ArrayList<V> insertionOrder;
 
     public HashMap2d(){
@@ -31,8 +33,11 @@ public class HashMap2d<K, S, V> implements Map2d<K, S, V>{
     /* Poistaa avainten osoittaman arvon ja samalla myös palauttaa sen paluuarvona. Jos arvoa ei löydy, palautetaan null */
     @Override
     public V remove(K key1, S key2) {
+        /*Poistetaan arvo V lisäysjärjestyksestä*/
         insertionOrder.remove(map2d.get(key1).get(key2));
+        /*Poistetaan avainparin mukainen arvo V*/
         V removedItem = map2d.get(key1).remove(key2);
+        /*Jos poistettu arvo V tekee HashMapistä tyhjän, poistetaan myös se*/
         if (map2d.get(key1).isEmpty()){
             map2d.remove(key1);
         }
@@ -57,6 +62,7 @@ public class HashMap2d<K, S, V> implements Map2d<K, S, V>{
     @Override
     public int size() {
         int size = 0;
+        /*Iteroidaan map2d HashMap<S, V> -olioiden läpi ja lasketaan arvojen kokonaismäärä*/
         for (Map.Entry<K, HashMap<S, V>> entry : map2d.entrySet()){
             size += entry.getValue().size();
         }

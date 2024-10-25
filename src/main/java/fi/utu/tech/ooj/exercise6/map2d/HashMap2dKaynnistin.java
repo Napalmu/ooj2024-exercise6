@@ -21,7 +21,7 @@ public class HashMap2dKaynnistin {
         testMap.put(1, 2, "y");
         testMap.put(2, 1, "z");
         //Testataan uudestaan, onko rakenne tyhjä
-        System.out.println("Onko tyhjä: 2/2 "+testMap.isEmpty());
+        System.out.println("Onko tyhjä: 2/3 "+testMap.isEmpty());
         //Tulostetaan koko
         System.out.println("Koko: "+testMap.size());
         //Haetaan rakenteesta määrätyillä avaimilla lisätty olio
@@ -35,6 +35,14 @@ public class HashMap2dKaynnistin {
         System.out.println("Löytyykö avainpari 2 ja 1: "+testMap.containtsKeyPair(2, 1));
         //Listataan talletetut oliot lisäämisjärjestyksessä
         System.out.println("Olioden lisäämisjärjestys: "+testMap.getElementsInOrder());
+        //Poistetaan kaikki elementit
+        testMap.remove(1, 1);
+        testMap.remove(1,2);
+        testMap.remove(2,1);
+        //Tulostetaan koko (tyhjä)
+        System.out.println("Onko tyhjä 3/3: "+testMap.isEmpty());
+        //Varmistetaan, että tietorakenne on tyhjä
+        System.out.println("HashMap2d -olio: "+testMap.values());
 
 
         System.out.println("------ HashMap2d luokan demo päättyy ------");
