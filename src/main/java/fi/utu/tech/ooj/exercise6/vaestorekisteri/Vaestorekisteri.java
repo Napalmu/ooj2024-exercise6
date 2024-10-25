@@ -1,9 +1,6 @@
 package fi.utu.tech.ooj.exercise6.vaestorekisteri;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class Vaestorekisteri {
     private TreeMap<Sukunimi, TreeMap<EtuNimi, HashSet<Kansalainen>>> nimiRekisteri;
@@ -13,8 +10,14 @@ public class Vaestorekisteri {
     public Vaestorekisteri() {
         nimiRekisteri = new TreeMap<>();
         hetuRekisteri = new HashMap<>();
-        ikajarjestysRekisteri = new TreeMap<>();
+        ikajarjestysRekisteri = new TreeMap<>(DoBComparator);
     }
+    Comparator<Kansalainen> DoBComparator = Comparator
+                                            .comparing((Kansalainen k) -> Integer.parseInt(k.getHenkilotunnus().toString().substring(4, 6)), Comparator.reverseOrder()) //Year
+                                            .thenComparing((Kansalainen k) -> Integer.parseInt(k.getHenkilotunnus().toString().substring(2, 4)), Comparator.reverseOrder()) //Month
+                                            .thenComparing((Kansalainen k) -> Integer.parseInt(k.getHenkilotunnus().toString().substring(0, 2)), Comparator.reverseOrder()) //Day
+                                            .thenComparing((Kansalainen k) -> k.getHenkilotunnus().toString().substring(6));
+
 
     public void  lisaaRekisteriin(Kansalainen tyyppi) {
         if (nimiRekisteri.containsKey(tyyppi.getSukunimi())) {
@@ -38,6 +41,7 @@ public class Vaestorekisteri {
 
         hetuRekisteri.put(tyyppi.getHenkilotunnus(), tyyppi);
         ikajarjestysRekisteri.put(tyyppi.getHenkilotunnus(), tyyppi);
+
     }
     public void muutaKansalaisenNimet(HenkiloTunnus hetu, EtuNimi etuNimi, Sukunimi sukunimi) {
         if (hetuRekisteri.containsKey(hetu)) {

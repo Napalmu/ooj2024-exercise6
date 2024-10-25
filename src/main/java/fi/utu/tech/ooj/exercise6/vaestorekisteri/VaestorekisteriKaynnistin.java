@@ -42,8 +42,8 @@ public class VaestorekisteriKaynnistin {
         vaestorekisteri.lisaaRekisteriin(kansalainen9);
         vaestorekisteri.lisaaRekisteriin(kansalainen10);
 
-        vaestorekisteri.tulostaNimirekisteri();
-        vaestorekisteri.tulostaHetuRekisteri();
+        //vaestorekisteri.tulostaNimirekisteri();
+       // vaestorekisteri.tulostaHetuRekisteri();
         vaestorekisteri.tulostaIkaRekisteri();
 
         //Muutosrutiinia voi kutsua näin:
